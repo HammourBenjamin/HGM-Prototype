@@ -1,5 +1,7 @@
 package com.example.nade13u.hgm_prototype;
 
+import java.security.PrivateKey;
+
 /**
  * Created by oun2u on 17/05/2017.
  */

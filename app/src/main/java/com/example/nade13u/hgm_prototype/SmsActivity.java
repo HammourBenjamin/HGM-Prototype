@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,8 @@ public class SmsActivity extends AppCompatActivity implements View.OnClickListen
     RadioButton rb1;
     RadioButton rb2;
     RadioButton rb3;
+    RelativeLayout pnl_list;
+    RelativeLayout pnl_sms;
 
 
     public static SmsActivity instance()
@@ -55,9 +58,13 @@ public class SmsActivity extends AppCompatActivity implements View.OnClickListen
         smsListView = (ListView) findViewById(R.id.liste_sms);
         btn_envoyer = (Button)findViewById(R.id.btn_envoyer);
         edt_message = (EditText)findViewById(R.id.edt_message);
+        pnl_list = (RelativeLayout)findViewById(R.id.pnl_list);
+        pnl_sms = (RelativeLayout)findViewById(R.id.pnl_sms);
         rb1 = (RadioButton)findViewById(R.id.p1);
         rb2 = (RadioButton)findViewById(R.id.p2);
         rb3 = (RadioButton)findViewById(R.id.p3);
+
+        pnl_list.getLayoutParams().height = getWindowManager().getDefaultDisplay().getHeight() - 2*pnl_sms.getLayoutParams().height ;
 
         btn_envoyer.setOnClickListener(this);
         numero = getIntent().getStringExtra("numero");
@@ -172,6 +179,7 @@ public class SmsActivity extends AppCompatActivity implements View.OnClickListen
             SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage(numero,null,message,null,null);
             Toast.makeText(getApplicationContext(),"SMS envoyé",Toast.LENGTH_LONG).show();
+            edt_message.setText(null);
         }
         catch (Exception e)
         {

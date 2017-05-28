@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SmsActivity" />
-        <activity android:name=".ListeConversation"></activity>
+        <activity android:name=".ListeConversationActivity" />
+        <activity android:name=".ListeContactActivity"></activity>
     </application>
 
 </manifest>
